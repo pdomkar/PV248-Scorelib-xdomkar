@@ -2,14 +2,6 @@ import sys
 import sqlite3
 import json
 
-# -mrun
-class ProcessFile:
-    def __init__(self):
-        pass
-
-    def process(self, fileName = '../data/scorelib.txt'):
-        pass
-
 def main():
     conn = sqlite3.connect( "../data/scorelib.dat" )
     if len(sys.argv) == 2:
@@ -25,7 +17,8 @@ def main():
     d = []
     for row in result:
         d.append({"composer": row[0]})
-        print(row[0])
+
+    print(json.dumps(d))
 
     with open('../data/data.json', 'w') as f:
         json.dump(d, f, ensure_ascii=False, indent=4)
